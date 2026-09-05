@@ -45,6 +45,7 @@ pnpm install --frozen-lockfile
 pnpm build
 pnpm test:site
 pnpm dlx wrangler@4.129.0 pages deploy dist --project-name blakdna-landing --branch main
+node scripts/verify-production.mjs
 ```
 
 Authenticate Wrangler through an approved operator login or a narrowly scoped deployment token held outside the repository. Use the intended Cloudflare account. Verify HTTPS, canonical origin, sitemap, robots, banner bytes, CSP, CTA destinations, and the production browser journey after deployment. Record the commit, deployment ID, URL, and test results before announcing a release. Roll back by redeploying a previously verified static artifact or using Cloudflare's deployment rollback controls.
