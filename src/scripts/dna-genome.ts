@@ -1,7 +1,11 @@
 export function initializeGenome(root: HTMLElement) {
   const canvas = root.querySelector("canvas")!;
   const context = canvas.getContext("2d");
-  if (!context) return;
+  if (!context) {
+    const fallback = root.querySelector<HTMLTemplateElement>(".dna-fallback")!;
+    fallback.after(fallback.content.cloneNode(true));
+    return;
+  }
   const stage = root.querySelector<HTMLElement>(".dna-stage")!;
   const controls = root.querySelector<HTMLElement>(".dna-controls")!;
   const play = root.querySelector<HTMLButtonElement>(".dna-play")!;

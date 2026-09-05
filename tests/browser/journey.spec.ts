@@ -61,7 +61,7 @@ test("footer identifies the maker and links its supplier certification", async (
   await page.goto("/");
   const credentials = page.locator(".footer-credentials");
   await credentials.scrollIntoViewIfNeeded();
-  await expect(credentials.getByRole("link", { name: "Visit Yuma IT" })).toHaveAttribute("href", "https://www.yumait.com.au/");
+  await expect(credentials.getByRole("link", { name: "Built by Yuma IT — visit website" })).toHaveAttribute("href", "https://www.yumait.com.au/");
   await expect(credentials.getByRole("link", { name: /Supply Nation Certified/ })).toHaveAttribute("href", "https://ibd.supplynation.org.au/public/s/supplierprofile?accid=a1GOd0000047QDBMA2");
   for (const logo of await credentials.getByRole("img").all()) {
     await expect.poll(() => logo.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
@@ -112,6 +112,7 @@ test("DNA connections support touch, keyboard, motion controls and linked outcom
   await page.goto("/#living-genome");
   const explorer = page.locator(".dna-explorer");
   await expect(explorer).toHaveAttribute("data-ready", "true");
+  expect(await page.evaluate(() => performance.getEntriesByType("resource").some((entry) => entry.name.includes("security-genome.png")))).toBe(false);
   const canvas = explorer.locator("canvas");
   const rotation = page.getByRole("slider", { name: "Rotate DNA" });
   await expect(page.getByRole("button", { name: "Play animation" })).toBeVisible();
@@ -165,6 +166,16 @@ test("DNA content remains usable without JavaScript", async ({ browser, baseURL 
   await page.getByRole("link", { name: "See verified remediation" }).click();
   await expect(page).toHaveURL(/\/product\/#screen-09-verified-remediation$/);
   await context.close();
+});
+
+test("DNA illustration remains available when canvas is unavailable", async ({ page }) => {
+  await page.addInitScript(() => {
+    HTMLCanvasElement.prototype.getContext = (() => null) as typeof HTMLCanvasElement.prototype.getContext;
+  });
+  await page.goto("/#living-genome");
+  await expect(page.locator(".dna-poster")).toBeVisible();
+  await expect(page.locator(".dna-controls")).toBeHidden();
+  await expect.poll(() => page.locator(".dna-poster").evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
 });
 
 test("DNA callouts stay clear at tablet widths and motion stops offscreen", async ({ page }) => {

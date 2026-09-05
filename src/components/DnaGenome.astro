@@ -13,7 +13,8 @@ const features = [
     <header><p class="eyebrow">Your organisation. A living Security Genome.</p><h2 id="dna-title">Resilience is in<br />the connections.</h2><p>Not a collection of alerts. A growing understanding of how your organisation changes, where risk develops, and what makes it stronger.</p></header>
     <div class="dna-explorer">
       <div class="dna-stage">
-        <img class="dna-poster" src="/images/security-genome.png" width="1536" height="1024" loading="lazy" decoding="async" alt="" />
+        <template class="dna-fallback"><img class="dna-poster" src="/images/security-genome.png" width="1536" height="1024" loading="lazy" decoding="async" alt="" /></template>
+        <noscript><img class="dna-poster" src="/images/security-genome.png" width="1536" height="1024" loading="lazy" decoding="async" alt="" /></noscript>
         <canvas aria-hidden="true"></canvas>
       </div>
       <div class="dna-callouts">
