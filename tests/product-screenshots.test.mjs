@@ -10,6 +10,8 @@ test("published product captures preserve reviewed dimensions and source hashes"
   assert.equal(manifest.deterministicHermes, true);
   assert.equal(manifest.inventory.length, 12);
   const selected = ["06-critical-risk", "07-evidence", "08-human-response", "09-verified-remediation", "10-adaptive-immunity", "12-recurrence"].map((name) => `${name}-detail.png`);
+  const expected = ["desktop", "mobile"].flatMap((project) => selected.map((filename) => `${project}/${filename}`));
+  assert.deepEqual(manifest.inventory.map((item) => `${item.project}/${item.filename}`).sort(), expected.sort());
   for (const project of ["desktop", "mobile"]) {
     assert.deepEqual((await readdir(new URL(`${project}/`, root))).sort(), [...selected].sort());
   }
