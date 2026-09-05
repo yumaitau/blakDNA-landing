@@ -8,4 +8,4 @@ Before review, run `pnpm test`, `pnpm build`, `pnpm test:site`, `node scripts/ch
 
 Avoid unsupported security or Marketplace claims, invented metrics, customer logos, unapproved imagery, and new tracking. Preserve keyboard access, reduced motion, strict TypeScript, internal links, and colour contrast. Reference the design/content decisions under docs.
 
-Self-hosted CI executes only trusted same-repository branches or reviewed workflow dispatches. An outside contributor's fork does not receive automatic execution on these runners.
+Self-hosted CI executes only trusted same-repository branches. An outside contributor's fork does not receive automatic execution on these runners. Maintainers must review an outside contribution before importing it to a trusted branch.

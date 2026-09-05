@@ -2,8 +2,9 @@ import lighthouse from "lighthouse";
 import { launch } from "chrome-launcher";
 import { chromium } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
+import { testTarget } from "./test-target.ts";
 
-const origin = process.env.BLAKDNA_SITE_TEST_URL ?? "http://127.0.0.1:4321";
+const origin = testTarget(process.env.BLAKDNA_SITE_TEST_URL).baseURL;
 const budgets = { performance: 0.9, accessibility: 0.95, "best-practices": 0.95, seo: 0.95 };
 await mkdir(".lighthouseci", { recursive: true });
 const chrome = await launch({ chromePath: chromium.executablePath(), chromeFlags: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"] });
