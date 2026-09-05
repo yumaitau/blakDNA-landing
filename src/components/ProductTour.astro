@@ -1,6 +1,7 @@
 ---
 import { productTour } from "../data/product-tour";
 import dimensions from "../data/product-screenshot-dimensions.json";
+import ImageViewer from "./ImageViewer.astro";
 ---
 <section id="product-tour" class="product-tour" aria-labelledby="tour-title">
   <header><p class="eyebrow">From dangerous change to stronger immunity</p><h2 id="tour-title">See the risk.<br />Prove the recovery.</h2><p>One new permission. A path into production. Follow how blakDNA explains the danger, remembers the response, verifies the fix, and recognises the pattern next time.</p><p class="caption">Actual product, synthetic organisation. Illustrative AWS observations and deterministic test reasoning; not customer telemetry or production deployment proof.</p></header>
@@ -11,10 +12,11 @@ import dimensions from "../data/product-screenshot-dimensions.json";
     const mobileSize = dimensions[`mobile/${preview}` as keyof typeof dimensions];
     return <article id={`screen-${item.name}`} class="tour-chapter">
       <h3>{item.title}</h3><p>{item.description}</p>
-      <figure><a href={`/images/product/desktop/${preview}`} aria-label={`Open product detail: ${item.title}`}><picture><source media="(max-width: 600px)" srcset={`/images/product/mobile/${preview}`} width={mobileSize.width} height={mobileSize.height} /><img src={`/images/product/desktop/${preview}`} width={size.width} height={size.height} loading="lazy" decoding="async" alt={`${item.title}: actual blakDNA browser capture using a synthetic organisation.`} /></picture></a><figcaption><a href={`/images/product/desktop/${preview}`}>Desktop detail</a> · <a href={`/images/product/mobile/${preview}`}>Mobile detail</a></figcaption></figure>
+      <figure><a data-image-viewer data-adaptive-image data-title={item.title} href={`/images/product/desktop/${preview}`} aria-label={`Open product detail: ${item.title}`}><picture><source media="(max-width: 600px)" srcset={`/images/product/mobile/${preview}`} width={mobileSize.width} height={mobileSize.height} /><img src={`/images/product/desktop/${preview}`} width={size.width} height={size.height} loading="lazy" decoding="async" alt={`${item.title}: actual blakDNA browser capture using a synthetic organisation.`} /></picture></a><figcaption><a data-image-viewer data-title={item.title} href={`/images/product/desktop/${preview}`}>Desktop detail</a> · <a data-image-viewer data-title={item.title} href={`/images/product/mobile/${preview}`}>Mobile detail</a></figcaption></figure>
     </article>;
   })}
 </section>
+<ImageViewer />
 <style>
   .product-tour { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   header p:not(.eyebrow) { margin-top: 24px; }

@@ -155,6 +155,48 @@ test("DNA connections support touch, keyboard, motion controls and linked outcom
   expect(errors).toEqual([]);
 });
 
+test("product images open in a responsive viewer with readable zoom and keyboard recovery", async ({ page, isMobile }, testInfo) => {
+  await page.goto("/product/#product-tour");
+  const chapter = page.locator(".tour-chapter").first();
+  const trigger = chapter.getByRole("link", { name: /Open product detail/ });
+  await trigger.click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(page).toHaveURL(/\/product\/#product-tour$/);
+  const picture = dialog.getByRole("img");
+  await expect(picture).toHaveAttribute("src", new RegExp(`/images/product/${isMobile ? "mobile" : "desktop"}/06-critical-risk-detail.png$`));
+  await expect.poll(() => picture.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  const viewport = dialog.locator(".viewer-viewport");
+  expect(await viewport.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await dialog.getByRole("button", { name: "Fit image", exact: true }).click();
+  expect(await viewport.evaluate((element) => element.scrollHeight <= element.clientHeight + 1)).toBe(true);
+  expect(await picture.evaluate((element) => {
+    const image = element as HTMLImageElement;
+    const bounds = image.getBoundingClientRect();
+    return Math.abs(bounds.width / bounds.height - image.naturalWidth / image.naturalHeight) < 0.01;
+  })).toBe(true);
+  await page.screenshot({ path: testInfo.outputPath("image-viewer-fit.png") });
+  const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
+  expect(results.violations).toEqual([]);
+  await page.keyboard.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  await expect(trigger).toBeFocused();
+  await expect(page.locator("html")).not.toHaveClass(/image-viewer-open/);
+  for (const current of await page.locator(".tour-chapter").all()) {
+    for (const device of ["Desktop", "Mobile"]) {
+      await current.getByRole("link", { name: `${device} detail`, exact: true }).click();
+      await expect(dialog).toBeVisible();
+      await expect(picture).toHaveAttribute("src", new RegExp(`/images/product/${device.toLowerCase()}/`));
+      await dialog.getByRole("button", { name: "Actual size", exact: true }).click();
+      await expect.poll(() => picture.evaluate((element) => {
+        const image = element as HTMLImageElement;
+        return image.complete && image.naturalWidth > 0 && Math.abs(image.getBoundingClientRect().width - image.naturalWidth) < 1;
+      })).toBe(true);
+      await dialog.getByRole("button", { name: "Close image" }).click();
+    }
+  }
+});
+
 test("DNA content remains usable without JavaScript", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL: baseURL!, javaScriptEnabled: false, viewport: { width: 320, height: 844 } });
   const page = await context.newPage();
