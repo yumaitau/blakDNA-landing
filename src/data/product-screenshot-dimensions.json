@@ -1,159 +1,47 @@
 {
-  "01-home.png": {
-    "width": 1440,
-    "height": 1636
-  },
-  "02-access.png": {
-    "width": 1440,
-    "height": 1000
-  },
-  "03-password-reset.png": {
-    "width": 1440,
-    "height": 1000
-  },
-  "04-administration.png": {
-    "width": 1440,
-    "height": 3250
-  },
-  "04-administration-detail.png": {
-    "width": 1180,
-    "height": 361
-  },
-  "05-pulse-empty.png": {
-    "width": 1440,
-    "height": 2532
-  },
-  "06-critical-risk.png": {
-    "width": 1440,
-    "height": 3801
-  },
   "06-critical-risk-detail.png": {
     "width": 1180,
     "height": 1026
-  },
-  "07-evidence.png": {
-    "width": 1440,
-    "height": 4067
   },
   "07-evidence-detail.png": {
     "width": 1180,
     "height": 1291
   },
-  "08-human-response.png": {
-    "width": 1440,
-    "height": 4134
-  },
   "08-human-response-detail.png": {
     "width": 1180,
     "height": 1358
-  },
-  "09-verified-remediation.png": {
-    "width": 1440,
-    "height": 4499
   },
   "09-verified-remediation-detail.png": {
     "width": 1180,
     "height": 553
   },
-  "10-adaptive-immunity.png": {
-    "width": 1440,
-    "height": 4499
-  },
   "10-adaptive-immunity-detail.png": {
     "width": 1180,
     "height": 509
-  },
-  "11-response-channels.png": {
-    "width": 1440,
-    "height": 4305
-  },
-  "11-response-channels-detail.png": {
-    "width": 1180,
-    "height": 276
-  },
-  "12-recurrence.png": {
-    "width": 1440,
-    "height": 5520
   },
   "12-recurrence-detail.png": {
     "width": 1180,
     "height": 1109
   },
-  "mobile/01-home.png": {
-    "width": 390,
-    "height": 2018
-  },
-  "mobile/02-access.png": {
-    "width": 390,
-    "height": 1613
-  },
-  "mobile/03-password-reset.png": {
-    "width": 390,
-    "height": 844
-  },
-  "mobile/04-administration.png": {
-    "width": 390,
-    "height": 3387
-  },
-  "mobile/04-administration-detail.png": {
-    "width": 362,
-    "height": 478
-  },
-  "mobile/05-pulse-empty.png": {
-    "width": 390,
-    "height": 2782
-  },
-  "mobile/06-critical-risk.png": {
-    "width": 390,
-    "height": 4401
-  },
   "mobile/06-critical-risk-detail.png": {
     "width": 362,
     "height": 1247
-  },
-  "mobile/07-evidence.png": {
-    "width": 390,
-    "height": 4769
   },
   "mobile/07-evidence-detail.png": {
     "width": 362,
     "height": 1615
   },
-  "mobile/08-human-response.png": {
-    "width": 390,
-    "height": 4938
-  },
   "mobile/08-human-response-detail.png": {
     "width": 362,
     "height": 1760
-  },
-  "mobile/09-verified-remediation.png": {
-    "width": 390,
-    "height": 5403
   },
   "mobile/09-verified-remediation-detail.png": {
     "width": 362,
     "height": 773
   },
-  "mobile/10-adaptive-immunity.png": {
-    "width": 390,
-    "height": 5403
-  },
   "mobile/10-adaptive-immunity-detail.png": {
     "width": 362,
     "height": 624
-  },
-  "mobile/11-response-channels.png": {
-    "width": 390,
-    "height": 5209
-  },
-  "mobile/11-response-channels-detail.png": {
-    "width": 362,
-    "height": 317
-  },
-  "mobile/12-recurrence.png": {
-    "width": 390,
-    "height": 6774
   },
   "mobile/12-recurrence-detail.png": {
     "width": 362,

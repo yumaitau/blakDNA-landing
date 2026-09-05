@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import { resolve } from "node:path";
 import assert from "node:assert/strict";
 import { routePaths } from "../src/data/pages.ts";
+import { permittedScriptAttributes } from "./script-policy.mjs";
 
 const root = resolve("dist");
 const external = new Set();
@@ -23,6 +24,9 @@ for (const route of routePaths) {
   assert.ok(!/AKIA[A-Z0-9]{16}|ASIA[A-Z0-9]{16}|ghp_[A-Za-z0-9]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/.test(html), `${route}: secret material`);
   const data = [...html.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
   assert.equal(data.length, 1, `${route}: structured data`);
+  for (const script of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)) {
+    assert.ok(permittedScriptAttributes(script[1]), `${route}: executable inline script violates CSP`);
+  }
   const graph = JSON.parse(data[0][1]);
   assert.equal(graph["@context"], "https://schema.org");
   assert.ok(graph["@graph"].some((item) => item["@type"] === "Organization"));

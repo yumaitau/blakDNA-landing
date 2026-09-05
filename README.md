@@ -10,15 +10,19 @@ Contact: https://www.yumait.com.au/contact
 
 This repository contains only public website material, not the application runtime or customer data.
 
-## Actual product tour
+## A living Security Genome
 
-[Explore all 12 product states](https://blakdna-landing.pages.dev/product/#product-tour): 40 authentic PNG captures cover the four current product routes, including full desktop/mobile pages and focused evidence, response, and immunity panels.
+[Explore the interactive DNA helix](https://blakdna-landing.pages.dev/#living-genome). Rotate the particle-built genome and explore branching feature callouts: connected context, dangerous mutations, attack paths, verified outcomes, adaptive immunity, and returning weaknesses. Animation pauses offscreen, supports keyboard controls, and respects reduced motion. A locally bundled DNA illustration remains visible without JavaScript or canvas.
+
+## See the organism in action
+
+[Follow the product journey](https://blakdna-landing.pages.dev/product/#product-tour): six consequential moments, from a dangerous permission change to verified remediation and learned immunity. Twelve authentic desktop/mobile detail captures; no routine account or configuration screens.
 
 ![Actual critical-risk event in the synthetic organisation](public/images/product/desktop/06-critical-risk-detail.png)
 
-The source journey runs real authentication and organism processing against an isolated PostgreSQL database. AWS observations, the Hermes reasoning adapter, email, and notification receivers are explicitly synthetic. No tokens, customer data, browser storage, or application source are included here. Full-image links preserve all below-the-fold content; mobile visitors receive mobile captures rather than unreadable desktop thumbnails.
+Actual product, synthetic organisation. Illustrative AWS observations and deterministic test reasoning; not customer telemetry or production deployment proof.
 
-`public/images/product/manifest.json` records capture timestamps, dimensions, routes, and SHA-256 hashes. `tests/product-screenshots.test.mjs` verifies the public assets against that inventory. Refresh these files only from a passing, manually reviewed application screenshot journey; do not draw or fabricate product screens. The marketing browser journey verifies every chapter, image, and desktop/mobile link.
+`public/images/product/manifest.json` records capture timestamps, dimensions, and SHA-256 hashes. Tests verify the curated asset inventory. Refresh only from a passing, manually reviewed application journey; never fabricate product screens. Complete internal capture coverage remains separate from this public selection.
 
 ## Run locally
 

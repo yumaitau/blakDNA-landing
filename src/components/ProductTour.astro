@@ -3,7 +3,7 @@ import { productTour } from "../data/product-tour";
 import dimensions from "../data/product-screenshot-dimensions.json";
 ---
 <section id="product-tour" class="product-tour" aria-labelledby="tour-title">
-  <header><p class="eyebrow">Inside the current product</p><h2 id="tour-title">A real journey.<br />Not a UI mockup.</h2><p>Browser captures from an isolated homelab run using <strong>Southern Range · Synthetic</strong>. Real application, authentication, PostgreSQL, ingestion, decisions, and verification; synthetic AWS observations, deterministic Hermes test adapter, and a local notification receiver. These are not customer data or proof of a production AWS deployment.</p><p>All four current UI routes are covered: home, access and administration, password recovery, and Pulse & response. Genome queries, deeper investigations, replay, and other analysis also exist through APIs and MCP; separate dashboards are not implied.</p></header>
+  <header><p class="eyebrow">From dangerous change to stronger immunity</p><h2 id="tour-title">See the risk.<br />Prove the recovery.</h2><p>One new permission. A path into production. Follow how blakDNA explains the danger, remembers the response, verifies the fix, and recognises the pattern next time.</p><p class="caption">Actual product, synthetic organisation. Illustrative AWS observations and deterministic test reasoning; not customer telemetry or production deployment proof.</p></header>
   <nav aria-label="Product tour chapters">{productTour.map((item) => <a href={`#screen-${item.name}`}>{item.title}</a>)}</nav>
   {productTour.map((item) => {
     const preview = `${item.name}${item.detail ? "-detail" : ""}.png`;
@@ -11,7 +11,7 @@ import dimensions from "../data/product-screenshot-dimensions.json";
     const mobileSize = dimensions[`mobile/${preview}` as keyof typeof dimensions];
     return <article id={`screen-${item.name}`} class="tour-chapter">
       <h3>{item.title}</h3><p>{item.description}</p>
-      <figure><a href={`/images/product/desktop/${item.name}.png`} aria-label={`Open full desktop screenshot: ${item.title}`}><picture><source media="(max-width: 600px)" srcset={`/images/product/mobile/${preview}`} width={mobileSize.width} height={mobileSize.height} /><img src={`/images/product/desktop/${preview}`} width={size.width} height={size.height} loading="lazy" decoding="async" alt={`${item.title}: actual blakDNA browser capture using a synthetic organisation.`} /></picture></a><figcaption>{item.detail ? "Focused capture from the actual screen." : "Full browser page capture."} <a href={`/images/product/desktop/${item.name}.png`}>Full desktop screen</a> · <a href={`/images/product/mobile/${item.name}.png`}>Full mobile screen</a></figcaption></figure>
+      <figure><a href={`/images/product/desktop/${preview}`} aria-label={`Open product detail: ${item.title}`}><picture><source media="(max-width: 600px)" srcset={`/images/product/mobile/${preview}`} width={mobileSize.width} height={mobileSize.height} /><img src={`/images/product/desktop/${preview}`} width={size.width} height={size.height} loading="lazy" decoding="async" alt={`${item.title}: actual blakDNA browser capture using a synthetic organisation.`} /></picture></a><figcaption><a href={`/images/product/desktop/${preview}`}>Desktop detail</a> · <a href={`/images/product/mobile/${preview}`}>Mobile detail</a></figcaption></figure>
     </article>;
   })}
 </section>
