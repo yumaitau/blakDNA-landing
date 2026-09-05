@@ -1,0 +1,67 @@
+<dialog class="image-viewer" aria-labelledby="image-viewer-title">
+  <div class="viewer-shell">
+    <header class="viewer-toolbar">
+      <h2 id="image-viewer-title">Product detail</h2>
+      <button type="button" class="viewer-close" autofocus>Close image</button>
+      <div class="viewer-options" role="group" aria-label="Image scale">
+        <button type="button" data-scale="width" aria-pressed="true">Fit width</button>
+        <button type="button" data-scale="fit" aria-pressed="false">Fit image</button>
+        <button type="button" data-scale="actual" aria-pressed="false">Actual size</button>
+        <a class="viewer-download" download>Download original</a>
+      </div>
+      <p>Actual product capture · Scroll to explore · Escape to close</p>
+    </header>
+    <div class="viewer-viewport" data-mode="width" tabindex="0" aria-label="Screenshot, scroll to explore"><img alt="" /></div>
+  </div>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>(".image-viewer")!;
+  const viewport = dialog.querySelector<HTMLElement>(".viewer-viewport")!;
+  const picture = viewport.querySelector("img")!;
+  const title = dialog.querySelector<HTMLElement>("h2")!;
+  const download = dialog.querySelector<HTMLAnchorElement>(".viewer-download")!;
+  const scales = [...dialog.querySelectorAll<HTMLButtonElement>("[data-scale]")];
+  const scale = (mode: string) => {
+    viewport.dataset.mode = mode;
+    scales.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.scale === mode)));
+    viewport.scrollTo(0, 0);
+  };
+  document.querySelectorAll<HTMLAnchorElement>("[data-image-viewer]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
+      const source = link.hasAttribute("data-adaptive-image") ? link.querySelector("img")!.currentSrc : link.href;
+      title.textContent = link.dataset.title ?? "Product detail";
+      picture.alt = `${title.textContent}. Actual blakDNA capture using a synthetic organisation.`;
+      picture.src = source;
+      download.href = source;
+      scale("width");
+      dialog.showModal();
+      document.documentElement.classList.add("image-viewer-open");
+    });
+  });
+  scales.forEach((button) => button.addEventListener("click", () => scale(button.dataset.scale!)));
+  dialog.querySelector(".viewer-close")!.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => document.documentElement.classList.remove("image-viewer-open"));
+</script>
+<style>
+  :global(html.image-viewer-open) { overflow: hidden; }
+  .image-viewer { position: fixed; inset: 16px; margin: auto; width: calc(100% - 32px); height: calc(100dvh - 32px); max-width: 1600px; max-height: none; padding: 0; border: 1px solid #596052; border-radius: 12px; background: #101210; color: #f4f0e9; overflow: hidden; }
+  .image-viewer::backdrop { background: #000b; }
+  .viewer-shell { display: flex; flex-direction: column; height: 100%; }
+  .viewer-toolbar { flex: none; display: grid; grid-template-columns: 1fr auto; gap: 12px 20px; padding: 18px 24px; border-bottom: 1px solid #41483e; }
+  h2 { font-size: 18px; line-height: 1.4; align-self: center; }
+  .viewer-options { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  button, a { color: #f4f0e9; font: inherit; font-size: 13px; }
+  button { min-height: 44px; padding: 8px 14px; border: 1px solid #76826f; border-radius: 6px; background: transparent; cursor: pointer; }
+  button[aria-pressed="true"] { color: #101210; background: #eca16d; border-color: #eca16d; }
+  a { padding: 12px; text-decoration: underline; }
+  p { grid-column: 1 / -1; margin: 0; font-size: 12px; color: #b5bdb4; }
+  .viewer-viewport { flex: 1; min-height: 0; min-width: 0; overflow: auto; padding: 16px; overscroll-behavior: contain; }
+  .viewer-viewport img { display: block; width: auto; max-width: 100%; height: auto; margin-inline: auto; }
+  .viewer-viewport[data-mode="fit"] { display: flex; justify-content: center; align-items: flex-start; }
+  .viewer-viewport[data-mode="fit"] img { max-height: 100%; object-fit: contain; }
+  .viewer-viewport[data-mode="actual"] img { max-width: none; margin-inline: 0; }
+  button:focus-visible, a:focus-visible, .viewer-viewport:focus-visible { outline: 2px solid #ffe0b8; outline-offset: -3px; }
+  @media (max-width: 600px) { .image-viewer { inset: 0; width: 100%; height: 100dvh; border-radius: 0; border: 0; } .viewer-toolbar { padding: 12px; gap: 8px; } h2 { font-size: 15px; } .viewer-viewport { padding: 8px; } button { padding-inline: 10px; } }
+</style>
