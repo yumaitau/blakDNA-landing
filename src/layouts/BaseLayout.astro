@@ -64,8 +64,25 @@ const structured = { "@context": "https://schema.org", "@graph": [organisation,
       <nav aria-label="Explore"><h2>Explore</h2><a href="/product/">The organism</a><a href="/security-genome/">Security Genome</a><a href="/attack-path-analysis/">Attack paths</a><a href="/adaptive-cyber-immunity/">Adaptive immunity</a><a href="/evidence-backed-risk/">Living risk</a></nav>
       <nav aria-label="Operate"><h2>Operate</h2><a href="/architecture/">Architecture</a><a href="/aws-marketplace/">AWS Marketplace model</a><a href="/deployment/">Deployment</a><a href={configuration.deploymentUrl}>Public deployment repository</a><a href="/contact/">Contact & support</a></nav>
       <nav aria-label="Trust"><h2>Trust</h2><a href="/security/">Safety boundaries</a><a href="/privacy/">Privacy</a><a href="/terms/">Website terms</a><a href="/responsible-disclosure/">Responsible disclosure</a><a href="/llms.txt">Machine-readable overview</a></nav>
+      <div class="footer-credentials" aria-label="Built by Yuma IT, a Supply Nation Certified Supplier">
+        <a class="footer-maker" href="https://www.yumait.com.au/" aria-label="Visit Yuma IT"><span>Built by</span><img src="/images/yuma-it-logo.svg" width="1024" height="460" loading="lazy" alt="Yuma IT" /></a>
+        <a class="footer-certification" href="https://ibd.supplynation.org.au/public/s/supplierprofile?accid=a1GOd0000047QDBMA2"><img src="/images/supply-nation-certified.svg" width="707" height="899" loading="lazy" alt="Supply Nation Certified" /><span>Yuma IT<br /><strong>Supply Nation Certified Supplier</strong><small>View supplier profile ↗</small></span></a>
+      </div>
       <div class="legal"><p>{company.name} · ABN {company.abn}<br />{company.address}</p><a href={`mailto:${company.email}`}>{company.email}</a><p>Product availability and deployment readiness: confirm with the team.</p></div>
     </footer>
     <script is:inline src="/scripts/navigation.js" defer></script>
   </body>
 </html>
+<style>
+  .footer-credentials { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px; padding: 28px; background: #111211; color: #f2f2ed; border: 1px solid #41483e; border-radius: var(--radius); }
+  .footer-credentials a { color: #f2f2ed; text-decoration: none; display: flex; align-items: center; gap: 20px; }
+  .footer-credentials a:focus-visible { outline: 2px solid #eca16d; outline-offset: 6px; }
+  .footer-credentials a:hover small { text-decoration: underline; }
+  .footer-maker span { font-size: 13px; color: #b5bdb4; }
+  .footer-maker img { width: 132px; height: auto; }
+  .footer-certification img { width: 68px; height: auto; flex-shrink: 0; }
+  .footer-certification span { font-size: 14px; line-height: 1.6; }
+  .footer-certification strong { font-weight: 500; }
+  .footer-certification small { display: block; color: #eca16d; margin-top: 6px; }
+  @media (max-width: 600px) { .footer-credentials { padding: 22px 16px; } .footer-credentials a { gap: 14px; } .footer-certification span { font-size: 12px; } .footer-certification img { width: 56px; } }
+</style>
