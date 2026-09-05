@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { configuration, questions } from "../data/site";
+import screenshotDimensions from "../data/product-screenshot-dimensions.json";
 const description = "blakDNA learns your organisation's cyber DNA, detects dangerous mutations in risk, and continuously strengthens your digital immune system.";
 ---
 <BaseLayout title="Learn your organisation's cyber DNA" description={description} home>
@@ -12,6 +13,7 @@ const description = "blakDNA learns your organisation's cyber DNA, detects dange
   </section>
   <figure class="brand-visual"><img src="/images/blakdna-banner.jpg" width="1200" height="630" loading="eager" fetchpriority="high" alt="blakDNA: adapt, detect, resist, evolve. A copper DNA helix connects security understanding with an Australian landscape." /></figure>
   <section class="statement container"><h2>Not another dashboard.<br />An understanding that stays.</h2><p>blakDNA is not a SIEM, CSPM, scanner, GRC platform, SOC dashboard, or chatbot. It connects their signals to your organisation's evolving context.</p><a class="text-link" href="/product/">Meet the organism <span aria-hidden="true">→</span></a></section>
+  <section class="product-preview container"><p class="eyebrow">Actual product, synthetic organisation</p><h2>See what happens<br />after the mutation.</h2><p>A real browser journey through evidence, human response, independently verified remediation, and adaptive immunity. Synthetic observations and deterministic test reasoning; not customer telemetry.</p><a href="/product/#product-tour"><picture><source media="(max-width: 600px)" srcset="/images/product/mobile/06-critical-risk-detail.png" width={screenshotDimensions["mobile/06-critical-risk-detail.png"].width} height={screenshotDimensions["mobile/06-critical-risk-detail.png"].height} /><img src="/images/product/desktop/06-critical-risk-detail.png" width={screenshotDimensions["06-critical-risk-detail.png"].width} height={screenshotDimensions["06-critical-risk-detail.png"].height} loading="lazy" decoding="async" alt="Actual blakDNA critical-risk event with an attack path, confidence, evidence disclosure, and recommended action in the synthetic organisation." /></picture></a><a class="text-link" href="/product/#product-tour">Explore all 12 product states <span aria-hidden="true">→</span></a></section>
   <section class="genome-section container"><div class="section-heading"><p class="eyebrow">The Security Genome</p><h2>See relationships.<br />Not isolated findings.</h2><p>Assets, identities, privileges, controls, and decisions form a connected picture of what matters and what an attacker could reach.</p></div>
     <div class="genome-words" aria-label="Connected security context"><span>Identities</span><span>Workloads</span><strong>Trust</strong><span>Repositories</span><span>Data</span><strong>Evidence</strong><span>Controls</span><span>Decisions</span></div>
     <a class="text-link" href="/security-genome/">Inside the genome <span aria-hidden="true">→</span></a>
@@ -31,3 +33,8 @@ const description = "blakDNA learns your organisation's cyber DNA, detects dange
   <section class="architecture-section container"><h2>Hermes thinks.<br />blakDNA remembers.</h2><p>Scoped reasoning and specialist delegation, supported by deterministic engineering and persistent cyber-specific memory.</p><div class="architecture-links"><a href="/architecture/">Explore the architecture <span aria-hidden="true">→</span></a><a href="/deployment/">Plan a customer-hosted deployment <span aria-hidden="true">→</span></a></div></section>
   <section class="faq container"><h2>Before you connect.</h2>{questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
 </BaseLayout>
+<style>
+  .product-preview { padding-block: 20px 88px; }
+  .product-preview > p:not(.eyebrow) { margin-block: 24px; }
+  .product-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); margin-block: 32px 24px; }
+</style>

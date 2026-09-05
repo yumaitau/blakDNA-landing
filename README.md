@@ -10,6 +10,16 @@ Contact: https://www.yumait.com.au/contact
 
 This repository contains only public website material, not the application runtime or customer data.
 
+## Actual product tour
+
+[Explore all 12 product states](https://blakdna-landing.pages.dev/product/#product-tour): 40 authentic PNG captures cover the four current product routes, including full desktop/mobile pages and focused evidence, response, and immunity panels.
+
+![Actual critical-risk event in the synthetic organisation](public/images/product/desktop/06-critical-risk-detail.png)
+
+The source journey runs real authentication and organism processing against an isolated PostgreSQL database. AWS observations, the Hermes reasoning adapter, email, and notification receivers are explicitly synthetic. No tokens, customer data, browser storage, or application source are included here. Full-image links preserve all below-the-fold content; mobile visitors receive mobile captures rather than unreadable desktop thumbnails.
+
+`public/images/product/manifest.json` records capture timestamps, dimensions, routes, and SHA-256 hashes. `tests/product-screenshots.test.mjs` verifies the public assets against that inventory. Refresh these files only from a passing, manually reviewed application screenshot journey; do not draw or fabricate product screens. The marketing browser journey verifies every chapter, image, and desktop/mobile link.
+
 ## Run locally
 
 Use Node 22.18+ (Node 24 in CI) and pnpm 10.34.5.
