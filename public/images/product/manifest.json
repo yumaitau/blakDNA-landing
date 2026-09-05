@@ -1,0 +1,366 @@
+{
+  "synthetic": true,
+  "deterministicHermes": true,
+  "inventory": [
+    {
+      "project": "desktop",
+      "filename": "01-home.png",
+      "route": "/",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 1636,
+      "sha256": "cf0425045647a9d111b281f324497c0f473453e58ce7b7fb072a161ba8b46f5e"
+    },
+    {
+      "project": "desktop",
+      "filename": "02-access.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "8d0244da8770dfca89ba6a2077a27f1bb2314b4925820116b30e8fbb2ccfdecb"
+    },
+    {
+      "project": "desktop",
+      "filename": "03-password-reset.png",
+      "route": "/reset-password",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "b12a3bf8b1338e921561016a59f2587f9818849518cf0536a2782b62d1028f11"
+    },
+    {
+      "project": "desktop",
+      "filename": "04-administration.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 3250,
+      "sha256": "adf54b10ccbac41eb4777d17f034203098002eedd907456f3148e7f1a46637a0"
+    },
+    {
+      "project": "desktop",
+      "filename": "04-administration-detail.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 361,
+      "sha256": "db4d6744cd97a3a81321e5964e18a6fd94821879374d9f80d0203140956fa8aa"
+    },
+    {
+      "project": "desktop",
+      "filename": "05-pulse-empty.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 2532,
+      "sha256": "c46750eca175233c544d3b769d0d721b126b1b75433b28d9a1cc91de04ea810e"
+    },
+    {
+      "project": "desktop",
+      "filename": "06-critical-risk.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 3801,
+      "sha256": "480cfc517e708039ad0d38114c0c26cdb4c25153e0f535bea36cd6436999ca3e"
+    },
+    {
+      "project": "desktop",
+      "filename": "06-critical-risk-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 1026,
+      "sha256": "e30faa65f6e973dda4e0d6ccc6d98e3380bb9dfd28260f412c2dee90504b0379"
+    },
+    {
+      "project": "desktop",
+      "filename": "07-evidence.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 4067,
+      "sha256": "0af6664a1f3fef85860374586a5df3633d42e72745a56c17dc35f9f73509b0ad"
+    },
+    {
+      "project": "desktop",
+      "filename": "07-evidence-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 1291,
+      "sha256": "6463dd4dc3a77ea29d6f7660916231d9f86cd3da4f61c41be457e7d9ff422486"
+    },
+    {
+      "project": "desktop",
+      "filename": "08-human-response.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 4134,
+      "sha256": "d736fcc8bbab134e6dac1d8fba87f805423f679b48c61cd20af33c45a3913780"
+    },
+    {
+      "project": "desktop",
+      "filename": "08-human-response-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 1358,
+      "sha256": "e9d99a7cb2e1de59e2a5f8e898dfdb0cc50bfd6ca0a138adb018cd08e643988a"
+    },
+    {
+      "project": "desktop",
+      "filename": "09-verified-remediation.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 4499,
+      "sha256": "db082d8bc980b60decd1997e78eb62bb7fdf1156392da46f5e44fa78ed194948"
+    },
+    {
+      "project": "desktop",
+      "filename": "09-verified-remediation-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 553,
+      "sha256": "39e048df5b6616305c260cf3ee89c638095c574b3ff3ef63459484d5bb2cfe86"
+    },
+    {
+      "project": "desktop",
+      "filename": "10-adaptive-immunity.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 4499,
+      "sha256": "280c5165ba4222148f049f8d8c02484a041ffe38479ca0d13b44e311d39fa1ce"
+    },
+    {
+      "project": "desktop",
+      "filename": "10-adaptive-immunity-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 509,
+      "sha256": "269963591060a9ae76a3f5aa90219dbcbe7fe4bbf2074f80e2eadb7f63e3926c"
+    },
+    {
+      "project": "desktop",
+      "filename": "11-response-channels.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 4305,
+      "sha256": "32ceb8c459759e03857b046aa009f0eb1724e0ddfacd640a42e00552b8fb21e8"
+    },
+    {
+      "project": "desktop",
+      "filename": "11-response-channels-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 276,
+      "sha256": "923e1aa2fa0dbca625e5929cc7666561650b9e511825056e61eb03e93a88f5c6"
+    },
+    {
+      "project": "desktop",
+      "filename": "12-recurrence.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1440,
+      "height": 5520,
+      "sha256": "a28554c24b34281e7d6545da844d468f1811b7b8f3b2d609ce2b74c0cbaf7364"
+    },
+    {
+      "project": "desktop",
+      "filename": "12-recurrence-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:02:44.202Z",
+      "width": 1180,
+      "height": 1109,
+      "sha256": "8cdaeda25f37509c581ebc881e42486a121d150d6fbb14d0d4f8c4ba87d11239"
+    },
+    {
+      "project": "mobile",
+      "filename": "01-home.png",
+      "route": "/",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 2018,
+      "sha256": "32a64a3210d4d7a49b01d97bbf813bbd0382b20b26d40815c8fdaf49863eab37"
+    },
+    {
+      "project": "mobile",
+      "filename": "02-access.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 1613,
+      "sha256": "4cbf8d238dbed86de638b703857189741edb98d6e9952f41150d44d1a9b7a274"
+    },
+    {
+      "project": "mobile",
+      "filename": "03-password-reset.png",
+      "route": "/reset-password",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 844,
+      "sha256": "bc2d57746686c4cd1ed33b7e43fc69c1ea6fad4481b43027de81cb56757b581c"
+    },
+    {
+      "project": "mobile",
+      "filename": "04-administration.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 3387,
+      "sha256": "f3f85841190c3cf891005b6db80de4a6f9286229aed140e841e9c438b75cfb57"
+    },
+    {
+      "project": "mobile",
+      "filename": "04-administration-detail.png",
+      "route": "/administration",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 478,
+      "sha256": "fc3dab5df3f6a58635bdf58e5a0dac480f1759323df033987614f61adf324adc"
+    },
+    {
+      "project": "mobile",
+      "filename": "05-pulse-empty.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 2782,
+      "sha256": "3d7b819748a0f368317145dee9e97d9f97987f5b4d0432a3fde601ec48a56062"
+    },
+    {
+      "project": "mobile",
+      "filename": "06-critical-risk.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 4401,
+      "sha256": "06ec4281237d54b1b527318ce77c1e8e4d5b21e936fce40a1c72c004080b4475"
+    },
+    {
+      "project": "mobile",
+      "filename": "06-critical-risk-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 1247,
+      "sha256": "70a066636604ab858ee8eb8fff3d854faeb8d10fdb57547edeefcd97dec749da"
+    },
+    {
+      "project": "mobile",
+      "filename": "07-evidence.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 4769,
+      "sha256": "344fbdafd7d43f0c446140f096e95db4e0ce041d2cb5c82082afe91035182c19"
+    },
+    {
+      "project": "mobile",
+      "filename": "07-evidence-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 1615,
+      "sha256": "0f4644afd757ded54ec650ce4c9a89c97983322a92e2b851a65067352daa6107"
+    },
+    {
+      "project": "mobile",
+      "filename": "08-human-response.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 4938,
+      "sha256": "b0f38993855ca93ff9ea586b052e6a45ee55af6b380ca2b77e08c836887170ba"
+    },
+    {
+      "project": "mobile",
+      "filename": "08-human-response-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 1760,
+      "sha256": "f2f26ed1705dc82e39ffd9448cf13257eb96e4e7d78de780f2d6a2595da44c7f"
+    },
+    {
+      "project": "mobile",
+      "filename": "09-verified-remediation.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 5403,
+      "sha256": "e9e9698291a9c9f322cdf9411067e578cae7d8b9c2b33025f187d1bae25dae70"
+    },
+    {
+      "project": "mobile",
+      "filename": "09-verified-remediation-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 773,
+      "sha256": "dad9cf01350658785cfddc6db9b807773acf0cd5dbd53bc8e0f03aec89d403d0"
+    },
+    {
+      "project": "mobile",
+      "filename": "10-adaptive-immunity.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 5403,
+      "sha256": "e8a95c5375f4b7c7a9b55b07380afaf3f4446d6408f28fb6e81354fdc3ea364f"
+    },
+    {
+      "project": "mobile",
+      "filename": "10-adaptive-immunity-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 624,
+      "sha256": "9cb1ab0ff8af946a191e14bb4cd115457eee7d711b9ffbcdd2290268b815b255"
+    },
+    {
+      "project": "mobile",
+      "filename": "11-response-channels.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 5209,
+      "sha256": "25b333f87c89f48dfd9d68e70037409cc29eda0407c9f9f000accb888fbc76a2"
+    },
+    {
+      "project": "mobile",
+      "filename": "11-response-channels-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 317,
+      "sha256": "e5f2175655960b67ee1a989867d5b8e512679a9158b84a1e4389e8c9567ce9da"
+    },
+    {
+      "project": "mobile",
+      "filename": "12-recurrence.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 390,
+      "height": 6774,
+      "sha256": "1d356028f0941e5a6629c8b555bb3e428ce70c36a2a44c9b05f402e9d2323c7d"
+    },
+    {
+      "project": "mobile",
+      "filename": "12-recurrence-detail.png",
+      "route": "/inbox",
+      "capturedAt": "2026-09-05T04:03:02.077Z",
+      "width": 362,
+      "height": 1382,
+      "sha256": "26873015377c8004c8522894bad73c28c18cbfdf68d55b9226d9a0da72a47a8a"
+    }
+  ]
+}

@@ -61,6 +61,34 @@ for (const route of ["/", "/architecture/", "/aws-marketplace/", "/contact/"]) {
   test(`visual baseline ${route}`, async ({ page }) => {
     await page.goto(route);
     await page.evaluate(() => document.fonts.ready);
+    for (const picture of await page.getByRole("img").all()) {
+      await picture.scrollIntoViewIfNeeded();
+      await picture.evaluate((element) => (element as HTMLImageElement).decode());
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page).toHaveScreenshot(`${route === "/" ? "home" : route.split("/")[1]}.png`, { fullPage: true });
   });
 }
+
+test("actual product tour exposes every desktop and mobile capture", async ({ page }, testInfo) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "Explore all 12 product states" }).click();
+  await expect(page).toHaveURL(/\/product\/#product-tour$/);
+  await expect(page.locator("#product-tour")).toContainText("deterministic Hermes test adapter");
+  const chapters = page.locator(".tour-chapter");
+  await expect(chapters).toHaveCount(12);
+  for (const chapter of await chapters.all()) {
+    const picture = chapter.getByRole("img");
+    await picture.scrollIntoViewIfNeeded();
+    await expect.poll(() => picture.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    for (const label of ["Full desktop screen", "Full mobile screen"]) {
+      const href = await chapter.getByRole("link", { name: label, exact: true }).getAttribute("href");
+      const response = await page.request.get(href!);
+      expect(response.ok()).toBe(true);
+      expect(response.headers()["content-type"]).toContain("image/png");
+    }
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await chapters.nth(5).screenshot({ path: testInfo.outputPath("product-tour-critical.png") });
+  await chapters.nth(11).screenshot({ path: testInfo.outputPath("product-tour-recurrence.png") });
+});

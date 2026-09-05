@@ -1,0 +1,28 @@
+---
+import { productTour } from "../data/product-tour";
+import dimensions from "../data/product-screenshot-dimensions.json";
+---
+<section id="product-tour" class="product-tour" aria-labelledby="tour-title">
+  <header><p class="eyebrow">Inside the current product</p><h2 id="tour-title">A real journey.<br />Not a UI mockup.</h2><p>Browser captures from an isolated homelab run using <strong>Southern Range · Synthetic</strong>. Real application, authentication, PostgreSQL, ingestion, decisions, and verification; synthetic AWS observations, deterministic Hermes test adapter, and a local notification receiver. These are not customer data or proof of a production AWS deployment.</p><p>All four current UI routes are covered: home, access and administration, password recovery, and Pulse & response. Genome queries, deeper investigations, replay, and other analysis also exist through APIs and MCP; separate dashboards are not implied.</p></header>
+  <nav aria-label="Product tour chapters">{productTour.map((item) => <a href={`#screen-${item.name}`}>{item.title}</a>)}</nav>
+  {productTour.map((item) => {
+    const preview = `${item.name}${item.detail ? "-detail" : ""}.png`;
+    const size = dimensions[preview as keyof typeof dimensions];
+    const mobileSize = dimensions[`mobile/${preview}` as keyof typeof dimensions];
+    return <article id={`screen-${item.name}`} class="tour-chapter">
+      <h3>{item.title}</h3><p>{item.description}</p>
+      <figure><a href={`/images/product/desktop/${item.name}.png`} aria-label={`Open full desktop screenshot: ${item.title}`}><picture><source media="(max-width: 600px)" srcset={`/images/product/mobile/${preview}`} width={mobileSize.width} height={mobileSize.height} /><img src={`/images/product/desktop/${preview}`} width={size.width} height={size.height} loading="lazy" decoding="async" alt={`${item.title}: actual blakDNA browser capture using a synthetic organisation.`} /></picture></a><figcaption>{item.detail ? "Focused capture from the actual screen." : "Full browser page capture."} <a href={`/images/product/desktop/${item.name}.png`}>Full desktop screen</a> · <a href={`/images/product/mobile/${item.name}.png`}>Full mobile screen</a></figcaption></figure>
+    </article>;
+  })}
+</section>
+<style>
+  .product-tour { padding-block: 32px 64px; border-top: 1px solid var(--line); }
+  header p:not(.eyebrow) { margin-top: 24px; }
+  nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 32px 56px; font-size: 15px; }
+  .tour-chapter { margin-block: 48px 72px; scroll-margin-top: 110px; }
+  .tour-chapter > p { margin-block: 18px 24px; }
+  figure { padding: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  img { display: block; width: 100%; height: auto; background: #0b0c0b; }
+  figcaption { padding: 16px 8px 6px; font-size: 14px; color: var(--muted); }
+  @media (max-width: 600px) { figure { padding: 5px; } figcaption { font-size: 13px; } }
+</style>
