@@ -61,6 +61,11 @@ for (const route of ["/", "/architecture/", "/aws-marketplace/", "/contact/"]) {
   test(`visual baseline ${route}`, async ({ page }) => {
     await page.goto(route);
     await page.evaluate(() => document.fonts.ready);
+    for (const picture of await page.getByRole("img").all()) {
+      await picture.scrollIntoViewIfNeeded();
+      await picture.evaluate((element) => (element as HTMLImageElement).decode());
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page).toHaveScreenshot(`${route === "/" ? "home" : route.split("/")[1]}.png`, { fullPage: true });
   });
 }
