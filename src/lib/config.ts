@@ -29,5 +29,7 @@ export function canonicalUrl(siteUrl: string, path: string): string {
 }
 
 export function jsonLd(value: unknown): string {
-  return JSON.stringify(value).replaceAll("<", "\\u003c");
+  const serialized = JSON.stringify(value);
+  if (serialized === undefined) throw new Error("Structured data must be JSON serializable");
+  return serialized.replaceAll("<", "\\u003c");
 }
