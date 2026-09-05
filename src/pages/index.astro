@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { configuration, questions } from "../data/site";
+const description = "blakDNA learns your organisation's cyber DNA, detects dangerous mutations in risk, and continuously strengthens your digital immune system.";
+---
+<BaseLayout title="Learn your organisation's cyber DNA" description={description} home>
+  <section class="hero container">
+    <p class="eyebrow">A continuously learning cyber-resilience organism</p>
+    <h1>Every organisation has<br />its own <span>cyber DNA.</span></h1>
+    <p class="hero-lead">Understand your connections. Recognise dangerous change. Remember what worked. Become more resilient with every verified outcome.</p>
+    <div class="actions"><a class="button" href={configuration.salesUrl}>Discuss an evaluation <span aria-hidden="true">↗</span></a><a class="text-link" href="/how-it-works/">Follow a mutation <span aria-hidden="true">→</span></a></div>
+  </section>
+  <figure class="brand-visual"><img src="/images/blakdna-banner.jpg" width="1200" height="630" loading="eager" fetchpriority="high" alt="blakDNA: adapt, detect, resist, evolve. A copper DNA helix connects security understanding with an Australian landscape." /></figure>
+  <section class="statement container"><h2>Not another dashboard.<br />An understanding that stays.</h2><p>blakDNA is not a SIEM, CSPM, scanner, GRC platform, SOC dashboard, or chatbot. It connects their signals to your organisation's evolving context.</p><a class="text-link" href="/product/">Meet the organism <span aria-hidden="true">→</span></a></section>
+  <section class="genome-section container"><div class="section-heading"><p class="eyebrow">The Security Genome</p><h2>See relationships.<br />Not isolated findings.</h2><p>Assets, identities, privileges, controls, and decisions form a connected picture of what matters and what an attacker could reach.</p></div>
+    <div class="genome-words" aria-label="Connected security context"><span>Identities</span><span>Workloads</span><strong>Trust</strong><span>Repositories</span><span>Data</span><strong>Evidence</strong><span>Controls</span><span>Decisions</span></div>
+    <a class="text-link" href="/security-genome/">Inside the genome <span aria-hidden="true">→</span></a>
+  </section>
+  <section class="mutation-section"><div class="container"><h2>One permission.<br />A different risk.</h2><p class="section-lead">A deployment role gains IAM policy-management rights. The change matters because of the route it may open.</p>
+    <ol class="attack-path" aria-label="Illustrative attack path"><li>GitHub repository</li><li>Actions</li><li>AWS deployment role</li><li>IAM policy modification</li><li>Production privilege escalation</li></ol>
+    <p class="caption">Synthetic demonstration. Reachability depends on policy scope, trust, and effective controls.</p>
+    <a class="text-link" href="/attack-path-analysis/">Understand the path <span aria-hidden="true">→</span></a>
+  </div></section>
+  <section class="loop-section container"><h2>The loop never ends<br />at “finding closed”.</h2><div class="loop-grid">
+    <article><h3>Sense & compare</h3><p>Normalize observations. Preserve evidence. Understand what changed in the genome.</p></article>
+    <article><h3>Remember & investigate</h3><p>Retrieve relevant memory. Test a hypothesis. Challenge the apparent attack path.</p></article>
+    <article><h3>Explain & respond</h3><p>Call out material risk. Capture a human's reason, not just a button press.</p></article>
+    <article><h3>Verify & learn</h3><p>Observe the fix independently. Retain the outcome. Evaluate adaptive antibodies.</p></article>
+  </div><a class="text-link" href="/adaptive-cyber-immunity/">How immunity develops <span aria-hidden="true">→</span></a></section>
+  <section class="principle container"><p class="eyebrow">A hard boundary</p><h2>Normal does not<br />mean secure.</h2><p>Learning your organisation's habits must never erase security knowledge. A common weakness is still a weakness.</p><a class="text-link" href="/security/">Read the safety model <span aria-hidden="true">→</span></a></section>
+  <section class="architecture-section container"><h2>Hermes thinks.<br />blakDNA remembers.</h2><p>Scoped reasoning and specialist delegation, supported by deterministic engineering and persistent cyber-specific memory.</p><div class="architecture-links"><a href="/architecture/">Explore the architecture <span aria-hidden="true">→</span></a><a href="/deployment/">Plan a customer-hosted deployment <span aria-hidden="true">→</span></a></div></section>
+  <section class="faq container"><h2>Before you connect.</h2>{questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
+</BaseLayout>

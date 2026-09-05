@@ -1,0 +1,71 @@
+---
+import "../styles/site.css";
+import { company, configuration, navigation, questions } from "../data/site";
+import { canonicalUrl, jsonLd } from "../lib/config";
+interface Props { title: string; description: string; home?: boolean; noindex?: boolean }
+const { title, description, home = false, noindex = false } = Astro.props;
+const canonical = canonicalUrl(configuration.siteUrl, Astro.url.pathname);
+const organisation = { "@type": "Organization", "@id": `${configuration.siteUrl}/#organisation`, name: company.name,
+  url: "https://www.yumait.com.au", email: company.email, identifier: `ABN ${company.abn}` };
+const structured = { "@context": "https://schema.org", "@graph": [organisation,
+  ...(home ? [{ "@type": "SoftwareApplication", name: "blakDNA", applicationCategory: "SecurityApplication",
+    operatingSystem: "Customer-hosted containers", description, url: configuration.siteUrl,
+    publisher: { "@id": organisation["@id"] } }, { "@type": "FAQPage", mainEntity: questions.map((item) => ({
+      "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })) }] : noindex ? [] : [{ "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${configuration.siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: title, item: canonical },
+    ] }]),
+] };
+---
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex || !configuration.indexing ? "noindex, nofollow" : "index, follow"} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#111211" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f7f6" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="blakDNA" />
+    <meta property="og:title" content={`${title} | blakDNA`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${configuration.siteUrl}/images/blakdna-banner.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="blakDNA DNA helix over an Australian landscape" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | blakDNA`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${configuration.siteUrl}/images/blakdna-banner.jpg`} />
+    <title>{title} | blakDNA</title>
+    <script is:inline type="application/ld+json" set:html={jsonLd(structured)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a href="/" class="wordmark" aria-label="blakDNA home">blak<span>DNA</span></a>
+      <button class="menu-button" aria-expanded="false" aria-controls="primary-navigation" type="button">Menu</button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Primary">
+        {navigation.map((item) => <a href={item.href} aria-current={Astro.url.pathname === item.href ? "page" : undefined}>{item.label}</a>)}
+        <a href="/contact/" aria-current={Astro.url.pathname === "/contact/" ? "page" : undefined}>Contact</a>
+      </nav>
+    </header>
+    <noscript><nav class="noscript-nav" aria-label="Navigation without JavaScript">{navigation.map((item) => <a href={item.href}>{item.label}</a>)}<a href="/contact/">Contact</a></nav></noscript>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-intro"><a href="/" class="wordmark" aria-label="blakDNA home">blak<span>DNA</span></a><p>A digital immune system.<br />Specific to your organisation.</p></div>
+      <nav aria-label="Explore"><h2>Explore</h2><a href="/product/">The organism</a><a href="/security-genome/">Security Genome</a><a href="/attack-path-analysis/">Attack paths</a><a href="/adaptive-cyber-immunity/">Adaptive immunity</a><a href="/evidence-backed-risk/">Living risk</a></nav>
+      <nav aria-label="Operate"><h2>Operate</h2><a href="/architecture/">Architecture</a><a href="/aws-marketplace/">AWS Marketplace model</a><a href="/deployment/">Deployment</a><a href={configuration.deploymentUrl}>Public deployment repository</a><a href="/contact/">Contact & support</a></nav>
+      <nav aria-label="Trust"><h2>Trust</h2><a href="/security/">Safety boundaries</a><a href="/privacy/">Privacy</a><a href="/terms/">Website terms</a><a href="/responsible-disclosure/">Responsible disclosure</a><a href="/llms.txt">Machine-readable overview</a></nav>
+      <div class="legal"><p>{company.name} · ABN {company.abn}<br />{company.address}</p><a href={`mailto:${company.email}`}>{company.email}</a><p>Product availability and deployment readiness: confirm with the team.</p></div>
+    </footer>
+    <script is:inline src="/scripts/navigation.js" defer></script>
+  </body>
+</html>
