@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pages, type EditorialPage } from "../data/pages";
+import { company, configuration } from "../data/site";
+export function getStaticPaths() { return pages.map((page) => ({ params: { slug: page.slug }, props: { page } })); }
+interface Props { page: EditorialPage }
+const { page } = Astro.props;
+const related = page.related.map((slug) => pages.find((item) => item.slug === slug)).filter((item): item is EditorialPage => Boolean(item));
+---
+<BaseLayout title={page.title} description={page.description}>
+  <article class="editorial container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>{page.slug.replaceAll("-", " ")}</span></nav>
+    <header class="editorial-header"><h1>{page.title}</h1><p>{page.lead}</p></header>
+    {page.slug === "architecture" && <div class="architecture-map" aria-label="Organism architecture"><p>Sources & sensors</p><span aria-hidden="true">↓</span><p>Normalized observations & evidence</p><span aria-hidden="true">↓</span><p>Temporal Security Genome</p><span aria-hidden="true">↕</span><strong>Hermes: scoped reasoning & delegation</strong><span aria-hidden="true">↓</span><p>Living risk · Human response · Verified outcome</p><span aria-hidden="true">↺</span><p>Immune memory & evaluated antibodies</p></div>}
+    <div class="article-sections">{page.sections.map((section) => <section><h2>{section.title}</h2>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</section>)}</div>
+    {page.slug === "contact" && <section class="contact-panel"><h2>Yuma IT</h2><p>{company.name}<br />ABN {company.abn}<br />{company.address}</p><a class="button" href={configuration.salesUrl}>Discuss an evaluation <span aria-hidden="true">↗</span></a><p>General enquiries: <a href={`mailto:${company.email}`}>{company.email}</a><br />Support and disclosure: <a href={`mailto:${company.support}`}>{company.support}</a></p></section>}
+    {page.slug === "deployment" && <section class="contact-panel"><h2>Open the buyer-facing repository.</h2><p>Check its readiness and release notes before using any deployment material.</p><a class="button" href={configuration.deploymentUrl}>Deployment repository <span aria-hidden="true">↗</span></a></section>}
+    {page.slug === "aws-marketplace" && <section class="contact-panel"><h2>Confirm current availability.</h2><p>Request the current offer, supported image, and evaluation prerequisites. This site is not a Marketplace listing.</p><a class="button" href={configuration.salesUrl}>Ask about Marketplace readiness <span aria-hidden="true">↗</span></a></section>}
+    {page.slug === "privacy" && <p class="policy-link"><a href="https://www.yumait.com.au/privacy">Read Yuma IT's privacy policy <span aria-hidden="true">↗</span></a></p>}
+    {page.slug === "responsible-disclosure" && <p class="policy-link"><a class="button" href={`mailto:${company.support}?subject=blakDNA%20security%20report`}>Contact the security team <span aria-hidden="true">↗</span></a></p>}
+  </article>
+  <nav class="related container" aria-label="Related reading"><h2>Keep exploring.</h2>{related.map((item) => <a href={`/${item.slug}/`}>{item.title}<span aria-hidden="true">→</span></a>)}</nav>
+</BaseLayout>
