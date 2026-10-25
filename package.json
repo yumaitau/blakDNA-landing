@@ -17,6 +17,14 @@
     "test:lighthouse": "node scripts/lighthouse.mjs",
     "test:homelab": "node scripts/run-homelab.mjs"
   },
+  "pnpm": {
+    "overrides": {
+      "astro>zod": "4.6.6",
+      "lighthouse>puppeteer-core": "25.16.0",
+      "undici": "8.12.2",
+      "vite": "8.2.4"
+    }
+  },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@axe-core/playwright": "4.13.0",
