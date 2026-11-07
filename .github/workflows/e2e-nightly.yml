@@ -31,6 +31,8 @@ jobs:
         if: always()
         with:
           name: landing-evidence
+          # .lighthouseci is a dot-directory; upload-artifact skips hidden files by default.
+          include-hidden-files: true
           path: |
             playwright-report
             test-results
